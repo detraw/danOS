@@ -15,8 +15,9 @@ STM_DIR=../stm/STM32F4-Discovery_FW_V1.1.0/
 # which are not in the current directory
 # (the sources of the standard peripheral library, which we use)
 # see also "info:/make/Selective Search" in Konqueror
-STM_SRC = $(STM_DIR)/Libraries/STM32F4xx_StdPeriph_Driver/src
-STM_SRC += ./stm32f407
+# STM_SRC = $(STM_DIR)/Libraries/STM32F4xx_StdPeriph_Driver/src
+STM_SRC = ./stm32f407
+STM_SRC += ./kernel
 
 # Tell make to look in that folder if it cannot find a source
 # in the current directory
@@ -29,6 +30,13 @@ SRCS   = main.c
 # our project. This file is in the current directory and
 # was writen by ST.
 SRCS  += system_stm32f4xx.c
+
+# Probably these should be set from a Makefile in the subdir?
+SRCS += interrupt.c
+SRCS += stm32f4xx_rcc.c
+SRCS += stm32f4xx_gpio.c
+SRCS += stm32f4xx_tim.c
+SRCS += misc.c
 
 # These source files implement the functions we use.
 # make finds them by searching the vpath defined above.
