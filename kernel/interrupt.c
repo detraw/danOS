@@ -3,6 +3,8 @@
 
 extern void _estack;
 
+void SysTick_Handler(void);
+
 void __attribute__((weak)) Reset_Handler(void);                 /* Reset Handler */
 void __attribute__((weak)) NMI_Handler(void);                   /* NMI Handler */
 void __attribute__((weak)) HardFault_Handler(void);             /* Hard Fault Handler */
@@ -12,7 +14,6 @@ void __attribute__((weak)) UsageFault_Handler(void);            /* Usage Fault H
 void __attribute__((weak)) SVC_Handler(void);                   /* SVCall Handler */
 void __attribute__((weak)) DebugMon_Handler(void);              /* Debug Monitor Handler */
 void __attribute__((weak)) PendSV_Handler(void);                /* PendSV Handler */
-void __attribute__((weak)) SysTick_Handler(void);               /* SysTick Handler */
 void __attribute__((weak)) WWDG_IRQHandler(void);               /* Window WatchDog              */
 void __attribute__((weak)) PVD_IRQHandler(void);                /* PVD through EXTI Line detection */
 void __attribute__((weak)) TAMP_STAMP_IRQHandler(void);         /* Tamper and TimeStamps through the EXTI line */
@@ -210,7 +211,6 @@ static void handle_irq(void);
 #pragma weak SVC_Handler                   = handle_irq /* SVCall Handler               */
 #pragma weak DebugMon_Handler              = handle_irq /* Debug Monitor Handler        */
 #pragma weak PendSV_Handler                = handle_irq /* PendSV Handler               */
-#pragma weak SysTick_Handler               = handle_irq /* SysTick Handler              */
 #pragma weak WWDG_IRQHandler               = handle_irq /* Window WatchDog              */
 #pragma weak PVD_IRQHandler                = handle_irq /* PVD through EXTI Line detection */
 #pragma weak TAMP_STAMP_IRQHandler         = handle_irq /* Tamper and TimeStamps through the EXTI line */

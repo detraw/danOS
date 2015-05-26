@@ -31,7 +31,7 @@
   */
 
   .syntax unified
-  .cpu cortex-m3
+  .cpu cortex-m4
   .fpu softvfp
   .thumb
 
@@ -99,3 +99,16 @@ LoopFillZerobss:
   bx  lr
 .size  Reset_Handler, .-Reset_Handler
 /*******************   (C)   COPYRIGHT   2011   STMicroelectronics   *****END   OF   FILE****/
+
+.global SysTick_Handler
+.extern systick_handler_c
+
+.section .text.SysTick_Handler
+SysTick_Handler:
+	b SysTick_Handler
+/*	mrs r0, psp
+	stmdb r0!, {r4-r11}
+	msr psp, r0
+	bl systick_handler_c
+	bx lr*/
+.size SysTick_Handler, .-SysTick_Handler
